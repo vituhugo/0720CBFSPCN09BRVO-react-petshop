@@ -11,11 +11,17 @@ class App extends React.Component {
             {nome:"Everton Luis da Silva", email: "everton.luis@gmail.com", data_nascimento: "12/01/1982"},
             {nome:"Victor Rodrigues", email: "victor.rodrigues@digitalhouse.com", data_nascimento: "04/10/1991"},
             {nome:"Vinicius", email: "vini@digitalhouse.com", data_nascimento: "04/10/1991"},
-        ]
+        ],
+        form_style: {display: "none"}
     }
 
     novoDono() {
         // Lógica de alterar o estado, lembremse do this.setState
+        this.setState({
+            // O "..." é igual o objeto inteiro do this.state
+            ...this.state,
+            form_style: {display: "block"}
+        });
     }
      
     render() {
@@ -48,7 +54,7 @@ class App extends React.Component {
         
                     <hr className="my-4" />
         
-                    <div className="container mt-3" style={{display: "none"}}  >
+                    <div className="container mt-3" style={this.state.form_style}>
                         <h1>Novo Dono</h1>
                         <form method="POST" action="/dono/<%= dono.id %>/alterar?_method=put">
                             <div className="row">
