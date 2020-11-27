@@ -1,35 +1,15 @@
-import logo from './logo.svg';
 import './App.css';
-
+import Linha from './components/Linha'
+import Layout from './components/Layout';
 function App() {
+    var donos = [
+        {nome:"Rafael de Carvalho", email: "rafael.carvalho@gmail.com", data_nascimento: "12/01/1983"},
+        {nome:"Everton Luis da Silva", email: "everton.luis@gmail.com", data_nascimento: "12/01/1982"},
+        {nome:"Victor Rodrigues", email: "victor.rodrigues@digitalhouse.com", data_nascimento: "04/10/1991"},
+        {nome:"Vinicius", email: "vini@digitalhouse.com", data_nascimento: "04/10/1991"},
+    ]
   return (
-    <main>
-        <nav className="navbar navbar-expand-lg navbar-light bg-light mb-5">
-            <div className="container">
-                <a className="navbar-brand" href="#">Admin</a>
-                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <a className="navbar-brand" href="#">Admin</a>
-                </button>
-            
-                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
-                </button>
-            
-                <div className="collapse navbar-collapse" id="navbarNav">
-                    <ul className="navbar-nav">
-                        <li className="nav-item active">
-                            <a className="nav-link" href="/">Home <span className="sr-only">(current)</span></a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="/pet">Lista de Pets</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="/dono">Lista de Donos</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+    <Layout>
         <div className="container">
             <h1 className="mx-3"> Donos </h1>
             <table className="table">
@@ -42,60 +22,9 @@ function App() {
                     </tr>
                 </thead>
                 <tbody>
-                <tr>
-                        <td>Gabriel Bowen</td>
-                        <td>01/09/20</td>
-                        <td>consequat.enim@Sed.ca</td>
-                        <td>
-                            <a href="/dono/1/visualizar">Ver</a>
-                            
-                            <span className="text-primary"> | </span>
-
-                            <a href="/dono/1/editar">Editar</a>
-
-                            <span className="text-primary"> | </span>
-
-                            <form action="/dono/1/remover" className="d-inline">
-                                <button className="btn btn-link p-0">Deletar</button>
-                            </form>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Gabriel Bowen</td>
-                        <td>01/09/20</td>
-                        <td>consequat.enim@Sed.ca</td>
-                        <td>
-                            <a href="/dono/1/visualizar">Ver</a>
-                            
-                            <span className="text-primary"> | </span>
-
-                            <a href="/dono/1/editar">Editar</a>
-
-                            <span className="text-primary"> | </span>
-
-                            <form action="/dono/1/remover" className="d-inline">
-                                <button className="btn btn-link p-0">Deletar</button>
-                            </form>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Gabriel Bowen</td>
-                        <td>01/09/20</td>
-                        <td>consequat.enim@Sed.ca</td>
-                        <td>
-                            <a href="/dono/1/visualizar">Ver</a>
-                            
-                            <span className="text-primary"> | </span>
-
-                            <a href="/dono/1/editar">Editar</a>
-
-                            <span className="text-primary"> | </span>
-
-                            <form action="/dono/1/remover" className="d-inline">
-                                <button className="btn btn-link p-0">Deletar</button>
-                            </form>
-                        </td>
-                    </tr>
+                    {donos.map((dono) => (
+                        <Linha nome={dono.nome} email={dono.email} data_nascimento={dono.data_nascimento} />
+                    ))}
                 </tbody>
             </table>
             <p className="text-right">
@@ -104,35 +33,35 @@ function App() {
 
             <hr className="my-4" />
 
-            <div class="container mt-3">
+            <div className="container mt-3">
                 <h1>Novo Dono</h1>
                 <form method="POST" action="/dono/<%= dono.id %>/alterar?_method=put">
-                    <div class="row">
-                        <label class="form-group col-12">
-                            <span class="form-label">Nome</span>
-                            <input class="form-control" type="text" name="nome" value="" />
+                    <div className="row">
+                        <label className="form-group col-12">
+                            <span className="form-label">Nome</span>
+                            <input className="form-control" type="text" name="nome" value="" />
                         </label>
                     </div>
-                    <div class="row">
-                        <label class="form-group col-12">
-                            <span class="form-label">Email</span>
-                            <input class="form-control" type="email" name="email" value=""  />
+                    <div className="row">
+                        <label className="form-group col-12">
+                            <span className="form-label">Email</span>
+                            <input className="form-control" type="email" name="email" value=""  />
                         </label>
                     </div>
-                    <div class="row">
-                        <label class="form-group col-12">
-                            <span class="form-label">Data de nascimento</span>
-                            <input class="form-control" type="text" name="data_nascimento" value=""  />
+                    <div className="row">
+                        <label className="form-group col-12">
+                            <span className="form-label">Data de nascimento</span>
+                            <input className="form-control" type="text" name="data_nascimento" value=""  />
                         </label>
                     </div>
                     
-                    <p class="text-right mt-3">
-                        <button class="btn btn-primary">Enviar</button>
+                    <p className="text-right mt-3">
+                        <button className="btn btn-primary">Enviar</button>
                     </p>
                 </form>
             </div>
         </div>
-    </main>
+    </Layout>
   );
 }
 
