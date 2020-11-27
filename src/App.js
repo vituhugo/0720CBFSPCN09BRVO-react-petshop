@@ -43,7 +43,7 @@ class App extends React.Component {
                         </tbody>
                     </table>
                     <p className="text-right">
-                        <a href="/dono/criar" className="btn btn-success" onClick={() => this.novoDono()}>+ Adicionar</a>
+                        <button className="btn btn-success" onClick={() => this.novoDono()}>+ Adicionar</button>
                     </p>
         
                     <hr className="my-4" />
